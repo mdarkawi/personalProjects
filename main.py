@@ -4,6 +4,8 @@
 # Press Double ⇧ to search everywhere for classes, files, tool windows, actions, and settings.
 
 from openpyxl import load_workbook
+from os import listdir
+from os.path import isfile, join
 
 def print_hi(name):
     # Use a breakpoint in the code line below to debug your script.
@@ -24,7 +26,11 @@ def getCoordinateSameColumn(coordinate):
     return ''.join(coordinate)
 
 def checkFile():
-    filename = 'import.xlsx'
+    mypath = 'importExcel'
+    files = [f for f in listdir(mypath) if isfile(join(mypath, f))]
+    print(files)
+
+    filename = join(mypath, files[0])
     wb = load_workbook(filename)
     return wb;
 
